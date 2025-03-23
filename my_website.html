@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seth Odero - CS Student</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6366f1;
+            --secondary: #4f46e5;
+            --dark: #1e293b;
+            --light: #f8fafc;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            transition: background 0.3s ease;
+        }
+
+        /* Modern Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem 2rem;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 12rem 2rem 6rem;
+            text-align: center;
+            background: linear-gradient(45deg, #e0e7ff, #ffffff);
+        }
+
+        .profile-container {
+            width: 220px;
+            height: 220px;
+            margin: 0 auto 2rem;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            padding: 6px;
+            box-shadow: 0 8px 24px rgba(99, 102, 241, 0.3);
+        }
+
+        .profile-pic {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: #fff;
+            overflow: hidden;
+        }
+
+        /* About Section */
+        .about {
+            padding: 6rem 2rem;
+            background: var(--light);
+        }
+
+        .about-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .skill-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .chip {
+            background: rgba(99, 102, 241, 0.1);
+            color: var(--primary);
+            padding: 0.5rem 1.2rem;
+            border-radius: 2rem;
+            font-weight: 500;
+            border: 1px solid rgba(99, 102, 241, 0.2);
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 6rem 2rem;
+            background: linear-gradient(45deg, #e0e7ff, #ffffff);
+        }
+
+        .contact-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 3rem;
+            border-radius: 1.5rem;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 0.75rem;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+        }
+
+        /* CV Section */
+        .cv-section {
+            text-align: center;
+            padding: 6rem 2rem;
+            background: var(--dark);
+            color: white;
+        }
+
+        .cv-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2.5rem;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 0.75rem;
+            margin-top: 2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .cv-button:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Animations */
+        [data-aos] {
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        @media (max-width: 768px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .hero {
+                padding: 8rem 1rem 4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-content">
+            <h2>SO</h2>
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero" id="home" data-aos="fade-up">
+        <div class="profile-container">
+            <div class="profile-pic">
+                <img src="profile.png" alt="" width="270">
+
+            </div>
+        </div>
+        <h1 data-aos="fade-up" data-aos-delay="200">Seth Odero</h1>
+        <p data-aos="fade-up" data-aos-delay="300">Computer Science Student & Machine learning ethusiast</p>
+    </section>
+
+    <section class="about" id="about">
+        <div class="about-grid" data-aos="fade-up">
+            <div>
+                <h2 class="section-title">About Me</h2>
+                <p class="text-lg">
+                    Hello and thank you for visiting my portfolio! I am <b>SETH ODERO</b>, a passionate data scientist student with a keen interest in transforming data into actionable insights.<br>
+
+
+With a background in Bsc.Applied Computer Science , I have honed my skills in data analysis, machine learning , and data visualization
+
+Throughout my studies, I have had the opportunity to work on diverse projects that range from predictive analytic to natural language processing, my goal is to leverage data to solve complex problems and help organization make informed decision
+
+A highly motivated and detail-oriented machine learning student at Kisii University with strong skills in data manipulation, data visualization, and web scraping. Seeking an internship or entry-level position to apply my knowledge and skills in a practical environment.
+                </p>
+            </div>
+            <div>
+                <h3 class="section-subtitle">Technical Skills</h3>
+                <div class="skill-chips">
+                    <span class="chip">Python</span>
+                    <span class="chip">SQL</span>
+                    <span class="chip">pytorch</span>
+                    <span class="chip">Streamlit</span>
+                    <span class="chip">Pandas & Numpy</span>
+                    <span class="chip">Matplotlib & Seaborn</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cv-section">
+        <div data-aos="zoom-in">
+            <h2>Ready to Collaborate?</h2>
+            <a href="CV.pdf" class="cv-button" download>
+                Download CV <i class="fas fa-arrow-down"></i>
+            </a>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Seth Odero - CS Student</title>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+            <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+            <style>
+                /* Add these new styles to the existing CSS */
+                .contact-info {
+                    display: grid;
+                    gap: 2rem;
+                    margin-bottom: 3rem;
+                }
+        
+                .contact-item {
+                    display: flex;
+                    align-items: center;
+                    gap: 1rem;
+                    color: var(--dark);
+                    text-decoration: none;
+                    transition: transform 0.3s ease;
+                }
+        
+                .contact-item:hover {
+                    transform: translateX(8px);
+                }
+        
+                .contact-icon {
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 50%;
+                    background: rgba(99, 102, 241, 0.1);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 1.2rem;
+                    color: var(--primary);
+                }
+        
+                .social-links {
+                    display: flex;
+                    gap: 1.5rem;
+                    margin-top: 2rem;
+                    justify-content: center;
+                }
+        
+                .social-link {
+                    font-size: 1.5rem;
+                    color: var(--dark);
+                    transition: color 0.3s ease;
+                }
+        
+                .social-link:hover {
+                    color: var(--primary);
+                }
+            </style>
+        </head>
+        <body>
+            <!-- Update the contact section with this code -->
+            <section class="contact" id="contact">
+                <div class="contact-container" data-aos="fade-up">
+                    <h2 class="section-title">Get in Touch</h2>
+                    
+                    <div class="contact-info">
+                        <a href="velagasseth@gmail.com" class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h3>Email</h3>
+                                <p>velagasseth@gmail.com</p>
+                            </div>
+                        </a>
+        
+                        <a href="tel:+254759812041" class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div>
+                                <h3>Phone</h3>
+                                <p>+254759812041</p>
+                            </div>
+                        </a>
+        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <h3>Location</h3>
+                                <p>Kisumu City, Kenya</p>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="social-links">
+                        <a href="https://linkedin.com" target="_blank" class="social-link">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://github.com" target="_blank" class="social-link">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://instagram.com" target="_blank" class="social-link">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://medium.com" target="_blank" class="social-link">
+                            <i class="fab fa-medium"></i>
+                        </a>
+                    </div>
+        
+                    <form class="contact-form">
+                        <div class="form-group">
+                            <input type="text" class="form-input" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-input" placeholder="Email Address" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-input" rows="5" placeholder="Your Message" required></textarea>
+                        </div>
+                        <button type="submit" class="cv-button">
+                            Send Message <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </section>
+            <!-- Add this to your contact section -->
+<div class="email-container" data-aos="fade-up" data-aos-delay="200">
+    <div class="email-card">
+        <div class="email-content">
+            <i class="fas fa-envelope-open-text email-icon"></i>
+            <h3>Let's Connect!</h3>
+            <p>Shoot me an email for collaborations or opportunities</p>
+        </div>
+        <a href="mailto:velagasseth@gmail.com" class="modern-email-button">
+            Open Email
+            <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
+</div>
+
+<style>
+    /* Add these new styles */
+    .email-container {
+        max-width: 800px;
+        margin: 2rem auto;
+    }
+
+    .email-card {
+        background: white;
+        border-radius: 1.5rem;
+        padding: 2.5rem;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+        text-align: center;
+        border: 1px solid rgba(99, 102, 241, 0.1);
+    }
+
+    .email-icon {
+        font-size: 2.5rem;
+        color: var(--primary);
+        margin-bottom: 1.5rem;
+    }
+
+    .modern-email-button {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.8rem;
+        padding: 1rem 2.5rem;
+        background: linear-gradient(45deg, var(--primary), var(--secondary));
+        color: white;
+        text-decoration: none;
+        border-radius: 0.75rem;
+        margin-top: 1.5rem;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        font-weight: 500;
+    }
+
+    .modern-email-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(99, 102, 241, 0.3);
+    }
+
+    .modern-email-button i {
+        transition: transform 0.3s ease;
+    }
+
+    .modern-email-button:hover i {
+        transform: translateX(4px);
+    }
+
+    .email-content h3 {
+        margin-bottom: 0.5rem;
+        color: var(--dark);
+    }
+
+    .email-content p {
+        color: #64748b;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+</style>
+        </body>
+        </html>
+    </section>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 150
+        });
+    </script>
+</body>
+</html>
